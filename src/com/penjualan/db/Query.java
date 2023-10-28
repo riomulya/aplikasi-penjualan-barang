@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DecimalFormat;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -267,4 +267,167 @@ public class Query {
             }
         }
     }
+
+    public static void insertDataBarang(String nama, String deskripsi, int harga) {
+        try {
+            connection = DatabaseConnection.getConnection();
+            String query = "INSERT INTO barang (nama, deskripsi, harga) VALUES (?, ?, ?)";
+            statement = connection.prepareStatement(query);
+
+            // Mengikat nilai parameter
+            statement.setString(1, nama);
+            statement.setString(2, deskripsi);
+            statement.setInt(3, harga);
+
+            // Menjalankan pernyataan INSERT
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                JOptionPane.showMessageDialog(null, "Data telah disisipkan ke dalam tabel.", "Insert Data Berhasil", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Gagal menyisipkan data ke dalam tabel.", "Insert Data Gagal", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Tutup statement dan koneksi
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }
+
+    public static void deleteData(String querry, int id) {
+        try {
+            connection = DatabaseConnection.getConnection();
+
+            // Menjalankan pernyataan INSERT
+            PreparedStatement preparedStatement = connection.prepareStatement(querry);
+            preparedStatement.setInt(1, id);
+
+            // Menjalankan perintah DELETE
+            int rowsDeleted = preparedStatement.executeUpdate();
+
+            if (rowsDeleted > 0) {
+                JOptionPane.showMessageDialog(null, "Data telah dihapus di dalam database", "Hapus Data Berhasil", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Gagal Menghapus data di database", "Hapus Data Gagal", JOptionPane.ERROR_MESSAGE);
+                System.out.println("Data tidak ditemukan atau gagal dihapus.");
+            }
+
+            // Menutup koneksi
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Tutup statement dan koneksi
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }
+
+    public static void updateDataBarang(int id, String nama, String deskripsi, int harga) {
+        try {
+            connection = DatabaseConnection.getConnection();
+            String query = "UPDATE barang SET nama = ?, deskripsi = ?, harga = ? WHERE id_barang = ?";
+            statement = connection.prepareStatement(query);
+
+            // Mengikat nilai parameter
+            statement.setString(1, nama);
+            statement.setString(2, deskripsi);
+            statement.setInt(3, harga);
+            statement.setInt(4, id); // ID data yang akan diperbarui
+
+            // Menjalankan pernyataan UPDATE
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated > 0) {
+                JOptionPane.showMessageDialog(null, "Data berhasil diperbarui.", "Update Data Berhasil", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Gagal memperbarui data.", "Update Data Gagal", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Tutup statement dan koneksi
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public static void getDataListBarangInventaris(JComboBox comboBox) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection = DatabaseConnection.getConnection();
+            String sql = "SELECT DISTINCT b.nama\n"
+                    + "FROM barang b\n"
+                    + "INNER JOIN inventaris_barang i ON b.id_barang = i.id_barang;";
+            preparedStatement = connection.prepareStatement(sql);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            comboBox.removeAllItems(); // Hapus item lama dari JComboBox
+
+            while (resultSet.next()) {
+                String item = resultSet.getString("nama");
+                comboBox.addItem(item);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
 }

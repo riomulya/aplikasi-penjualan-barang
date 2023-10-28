@@ -33,7 +33,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="updateStok" pref="225" max="32767" attributes="0"/>
-                                  <Component id="listBarang" max="32767" attributes="0"/>
+                                  <Component id="listBarang1" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -41,11 +41,9 @@
                                   <Component id="deleteBtn" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="p" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="262" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="p" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -53,7 +51,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="listBarang1" max="32767" attributes="0"/>
+                  <Component id="listBarang" max="32767" attributes="0"/>
                   <Component id="stokBarang" pref="225" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -68,7 +66,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="panelBorder2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-              <Component id="listBarang1" min="-2" max="-2" attributes="0"/>
+              <Component id="listBarang" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="stokBarang" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -78,7 +76,7 @@
               <Component id="p" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="listBarang" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="listBarang1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="deleteBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -100,7 +98,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
                   <Component id="p1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="261" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -123,7 +121,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Input Data Inventaris Barang"/>
+            <Property name="text" type="java.lang.String" value="Input Data Stok Inventaris Barang"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -154,7 +152,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Update dan Delete Data Inventaris Barang"/>
+        <Property name="text" type="java.lang.String" value="Update dan Delete Stok Data Inventaris Barang"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="updateStok">
@@ -167,7 +165,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="listBarang">
+    <Component class="javax.swing.JComboBox" name="listBarang1">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -182,7 +180,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="listBarang1">
+    <Component class="javax.swing.JComboBox" name="listBarang">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">

@@ -2,12 +2,16 @@ package com.penjualan.form;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.penjualan.db.DatabaseConnection;
+import com.penjualan.db.Query;
+import static com.penjualan.db.Query.connection;
+import static com.penjualan.db.Query.statement;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class Form_Input_Barang extends javax.swing.JPanel {
@@ -21,9 +25,9 @@ public class Form_Input_Barang extends javax.swing.JPanel {
 
         deskripsiBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "kok gabisa");
         deskripsiBarang1.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Deskripsi Barang");
-        
+
         deskripsiBarang.setText("Deskripsi Barang");
-        
+
         deskripsiBarang.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -39,9 +43,9 @@ public class Form_Input_Barang extends javax.swing.JPanel {
                 }
             }
         });
-        
+
         deskripsiBarang1.setText("Deskripsi Barang");
-        
+
         deskripsiBarang1.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -73,7 +77,7 @@ public class Form_Input_Barang extends javax.swing.JPanel {
         hargaBarang = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         deskripsiBarang = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        simpanBtn = new javax.swing.JButton();
         updateBtn = new javax.swing.JButton();
         idBarang = new javax.swing.JTextField();
         hargaBarang1 = new javax.swing.JTextField();
@@ -115,10 +119,10 @@ public class Form_Input_Barang extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(deskripsiBarang);
 
-        jButton1.setText("Simpan");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        simpanBtn.setText("Simpan");
+        simpanBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                simpanBtnActionPerformed(evt);
             }
         });
 
@@ -172,7 +176,7 @@ public class Form_Input_Barang extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(120, 120, 120)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton1)
+                                    .addComponent(simpanBtn)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(deleteBtn)
                                         .addGap(28, 28, 28)
@@ -209,7 +213,7 @@ public class Form_Input_Barang extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(hargaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(simpanBtn)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
@@ -233,9 +237,13 @@ public class Form_Input_Barang extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void simpanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        Query.insertDataBarang(namaBarang.getText(), deskripsiBarang.getText(), Integer.parseInt(hargaBarang.getText()));
+        namaBarang.setText("");
+        hargaBarang.setText("");
+        deskripsiBarang.setText("");
+    }//GEN-LAST:event_simpanBtnActionPerformed
 
     private void deskripsiBarangFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_deskripsiBarangFocusGained
         // TODO add your handling code here:
@@ -247,24 +255,37 @@ public class Form_Input_Barang extends javax.swing.JPanel {
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
+        String sql = "DELETE FROM barang WHERE id_barang = ?";
+        Query.deleteData(sql, Integer.parseInt(idBarang.getText()));
+        namaBarang1.setText("");
+        hargaBarang1.setText("");
+        deskripsiBarang1.setText("");
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
+        Query.updateDataBarang(Integer.parseInt(idBarang.getText()), namaBarang1.getText(), deskripsiBarang1.getText(), Integer.parseInt(hargaBarang1.getText()));
+        namaBarang1.setText("");
+        hargaBarang1.setText("");
+        deskripsiBarang1.setText("");
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void idBarangCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_idBarangCaretUpdate
         // TODO add your handling code here:
-        
+        if (idBarang.getText().isEmpty()) {
+            namaBarang1.setText("");
+            hargaBarang1.setText("");
+            deskripsiBarang1.setText("");
+        }
         try {
             Connection c = DatabaseConnection.getConnection();
             Statement s = c.createStatement();
             String sql = "Select * from barang where id_barang ='" + this.idBarang.getText() + "'";
             ResultSet r = s.executeQuery(sql);
             while (r.next()) {
-              namaBarang1.setText(r.getString("nama"));
-              deskripsiBarang1.setText(r.getString("deskripsi"));
-              hargaBarang1.setText(r.getString("harga"));
+                namaBarang1.setText(r.getString("nama"));
+                deskripsiBarang1.setText(r.getString("deskripsi"));
+                hargaBarang1.setText(r.getString("harga"));
             }
             r.close();
             s.close();
@@ -281,7 +302,6 @@ public class Form_Input_Barang extends javax.swing.JPanel {
     private javax.swing.JTextField hargaBarang;
     private javax.swing.JTextField hargaBarang1;
     private javax.swing.JTextField idBarang;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField namaBarang;
@@ -289,6 +309,7 @@ public class Form_Input_Barang extends javax.swing.JPanel {
     private javax.swing.JLabel p;
     private javax.swing.JLabel p1;
     private com.penjualan.swing.PanelBorder panelBorder2;
+    private javax.swing.JButton simpanBtn;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 }

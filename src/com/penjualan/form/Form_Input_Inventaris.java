@@ -1,18 +1,22 @@
 package com.penjualan.form;
 
 import com.formdev.flatlaf.FlatClientProperties;
-
+import com.mysql.cj.xdevapi.Statement;
+import com.penjualan.db.DatabaseConnection;
+import com.penjualan.db.Query;
 
 public class Form_Input_Inventaris extends javax.swing.JPanel {
 
     public Form_Input_Inventaris() {
         initComponents();
-        
-        stokBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Stok Barang");
 
+        stokBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Stok Barang");
 
         updateStok.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nama Barang");
         updateStok.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Update Stok Barang");
+
+        Query.getDataListBarangInventaris(listBarang);
+        Query.getDataListBarangInventaris(listBarang1);
     }
 
     @SuppressWarnings("unchecked")
@@ -27,14 +31,14 @@ public class Form_Input_Inventaris extends javax.swing.JPanel {
         p = new javax.swing.JLabel();
         updateStok = new javax.swing.JTextField();
         deleteBtn = new javax.swing.JButton();
-        listBarang = new javax.swing.JComboBox<>();
         listBarang1 = new javax.swing.JComboBox<>();
+        listBarang = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(242, 242, 242));
 
         p1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         p1.setForeground(new java.awt.Color(255, 102, 102));
-        p1.setText("Input Data Inventaris Barang");
+        p1.setText("Input Data Stok Inventaris Barang");
 
         javax.swing.GroupLayout panelBorder2Layout = new javax.swing.GroupLayout(panelBorder2);
         panelBorder2.setLayout(panelBorder2Layout);
@@ -43,7 +47,7 @@ public class Form_Input_Inventaris extends javax.swing.JPanel {
             .addGroup(panelBorder2Layout.createSequentialGroup()
                 .addGap(207, 207, 207)
                 .addComponent(p1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(261, Short.MAX_VALUE))
         );
         panelBorder2Layout.setVerticalGroup(
             panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -69,7 +73,7 @@ public class Form_Input_Inventaris extends javax.swing.JPanel {
 
         p.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         p.setForeground(new java.awt.Color(255, 102, 102));
-        p.setText("Update dan Delete Data Inventaris Barang");
+        p.setText("Update dan Delete Stok Data Inventaris Barang");
 
         deleteBtn.setText("DELETE");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -78,9 +82,9 @@ public class Form_Input_Inventaris extends javax.swing.JPanel {
             }
         });
 
-        listBarang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         listBarang1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        listBarang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -97,19 +101,18 @@ public class Form_Input_Inventaris extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(updateStok, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                                    .addComponent(listBarang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(listBarang1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(117, 117, 117)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(updateBtn)
                                     .addComponent(deleteBtn)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(p)
-                                .addGap(0, 262, Short.MAX_VALUE)))))
+                            .addComponent(p))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(215, 215, 215)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(listBarang1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(listBarang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(stokBarang, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
                 .addGap(31, 31, 31)
                 .addComponent(simpanBtn)
@@ -121,7 +124,7 @@ public class Form_Input_Inventaris extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(panelBorder2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
-                .addComponent(listBarang1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(listBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(stokBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,7 +133,7 @@ public class Form_Input_Inventaris extends javax.swing.JPanel {
                 .addComponent(p)
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(listBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(listBarang1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteBtn))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
