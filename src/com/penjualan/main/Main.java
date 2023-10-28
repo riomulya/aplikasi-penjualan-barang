@@ -16,6 +16,8 @@ import com.penjualan.form.Form_Inventaris;
 import com.penjualan.form.Form_Pelanggan;
 import com.penjualan.form.Form_Suplier;
 import com.penjualan.form.Form_Transaksi_Penjualan;
+import com.penjualan.form.LoginForm;
+import com.penjualan.form.LoginValidation;
 import java.awt.Color;
 import java.awt.Insets;
 import javax.swing.JComponent;
@@ -73,22 +75,10 @@ public class Main extends javax.swing.JFrame {
         inputInventaris = new Form_Input_Inventaris();
         inputTransaksi = new Form_Input_Transaksi();
         aboutMe = new Form_About_Me();
-//        menu1.addEventMenuSelected(new EventMenuSelected() {
-//            @Override
-//            public void selected(int index) {
-//                if (index == 0) {
-//                    setForm(home);
-//                } else if (index == 1) {
-//                    setForm(form1);
-//                } else if (index == 2) {
-//                    setForm(form2);
-//                } else if (index == 3) {
-//                    setForm(form3);
-//                }
-//            }
-//        });
+
         //  set when system open start with home form
         menu1.initMoving(this);
+
         menu1.addEventMenu(new EventMenu() {
             @Override
             public void menuIndexChange(int index) {
@@ -140,7 +130,7 @@ public class Main extends javax.swing.JFrame {
             }
         }
         );
-        setForm(new Form_Barang());
+        setForm(new LoginForm());
     }
 
     private void setForm(JComponent com) {

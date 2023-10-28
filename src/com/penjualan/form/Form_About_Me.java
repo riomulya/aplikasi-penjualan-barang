@@ -20,7 +20,6 @@ public class Form_About_Me extends javax.swing.JPanel {
 
     public Form_About_Me() {
         initComponents();
-        p.setBackground(Color.WHITE);
         JPanel p = new JPanel();
         p.setBackground(Color.WHITE);
     }
@@ -51,67 +50,57 @@ public class Form_About_Me extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        gradientBorder1 = new com.penjualan.component.GradientBorder();
-        p = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        gradientBorderInput1 = new com.penjualan.component.GradientBorderInput();
+        p1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(242, 242, 242));
-        setPreferredSize(new java.awt.Dimension(550, 700));
+        setPreferredSize(new java.awt.Dimension(722, 454));
 
-        gradientBorder1.setPreferredSize(new java.awt.Dimension(550, 560));
+        p1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        p1.setForeground(new java.awt.Color(255, 102, 102));
+        p1.setText("About Me");
 
-        p.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        p.setForeground(new java.awt.Color(255, 102, 102));
-        p.setText("About Me");
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel5.setText("Nama : Rio Mulya Syawal");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Nama : Rio Mulya Syawal");
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 204, 51));
+        jLabel6.setText("UNIVERSITAS PAMULANG");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("Kelas : 05TPLP015");
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel7.setText("Kelas : 05TPLP015");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel3.setText("Nim : 211011401091");
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel4.setText("UNIVERSITAS PAMULANG");
-
-        javax.swing.GroupLayout gradientBorder1Layout = new javax.swing.GroupLayout(gradientBorder1);
-        gradientBorder1.setLayout(gradientBorder1Layout);
-        gradientBorder1Layout.setHorizontalGroup(
-            gradientBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(gradientBorder1Layout.createSequentialGroup()
-                .addGroup(gradientBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(gradientBorder1Layout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(p))
-                    .addGroup(gradientBorder1Layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addGroup(gradientBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addGroup(gradientBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel3)))))
-                .addContainerGap(115, Short.MAX_VALUE))
+        javax.swing.GroupLayout gradientBorderInput1Layout = new javax.swing.GroupLayout(gradientBorderInput1);
+        gradientBorderInput1.setLayout(gradientBorderInput1Layout);
+        gradientBorderInput1Layout.setHorizontalGroup(
+            gradientBorderInput1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(gradientBorderInput1Layout.createSequentialGroup()
+                .addGap(187, 187, 187)
+                .addGroup(gradientBorderInput1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6)
+                    .addGroup(gradientBorderInput1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(gradientBorderInput1Layout.createSequentialGroup()
+                            .addGap(75, 75, 75)
+                            .addComponent(p1))
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel7)))
+                .addContainerGap(224, Short.MAX_VALUE))
         );
-        gradientBorder1Layout.setVerticalGroup(
-            gradientBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(gradientBorder1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(p)
+        gradientBorderInput1Layout.setVerticalGroup(
+            gradientBorderInput1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(gradientBorderInput1Layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(p1)
                 .addGap(110, 110, 110)
-                .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel2)
-                .addGap(27, 27, 27)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(89, 89, 89))
+                .addComponent(jLabel5)
+                .addGap(39, 39, 39)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(83, 83, 83))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -120,25 +109,24 @@ public class Form_About_Me extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(gradientBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(gradientBorderInput1, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(gradientBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(gradientBorderInput1, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.penjualan.component.GradientBorder gradientBorder1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel p;
+    private com.penjualan.component.GradientBorderInput gradientBorderInput1;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel p1;
     // End of variables declaration//GEN-END:variables
 }

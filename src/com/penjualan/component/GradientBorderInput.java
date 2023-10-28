@@ -1,4 +1,4 @@
-
+            
 package com.penjualan.component;
 
 
@@ -9,9 +9,9 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
 
-public class GradientBorder extends javax.swing.JPanel {
+public class GradientBorderInput extends javax.swing.JPanel {
 
-    public GradientBorder() {
+    public GradientBorderInput() {
         initComponents();
         setOpaque(false);
     }
@@ -38,7 +38,7 @@ public class GradientBorder extends javax.swing.JPanel {
     protected void paintComponent(Graphics grphcs) {
        Graphics2D g2 = (Graphics2D) grphcs;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        GradientPaint g = new GradientPaint(0, 0, Color.decode("#ee0979"), 0, getHeight(), Color.decode("#ff6a00"));
+        GradientPaint g = new GradientPaint(0, 0, Color.decode("#373B44"), 0, getHeight(), Color.decode("#4286f4"));
         g2.setPaint(g);
         g2.fillRoundRect(0, 0, getWidth(), getHeight(), 20, 20);
         super.paintComponent(grphcs);
