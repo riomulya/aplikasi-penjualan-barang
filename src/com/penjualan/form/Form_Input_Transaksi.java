@@ -1,61 +1,16 @@
 package com.penjualan.form;
 
 import com.formdev.flatlaf.FlatClientProperties;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import javax.swing.UIManager;
 
 public class Form_Input_Transaksi extends javax.swing.JPanel {
 
     public Form_Input_Transaksi() {
         initComponents();
-        namaBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nama Barang");
-        hargaBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Harga Barang");
+        jumlahBeli.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Jumlah Beli");
 
-        UIManager.put("TextArea.emptyText", "Deskripsi Barang");
-
-        deskripsiBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "kok gabisa");
-        deskripsiBarang1.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Deskripsi Barang");
+        idTransaksi.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Cari Transaksi Berdasarkan ID");
         
-        deskripsiBarang.setText("Deskripsi Barang");
-        
-        deskripsiBarang.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (deskripsiBarang.getText().equals("Deskripsi Barang")) {
-                    deskripsiBarang.setText("");
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if (deskripsiBarang.getText().isEmpty()) {
-                    deskripsiBarang.setText("Deskripsi Barang");
-                }
-            }
-        });
-        
-        deskripsiBarang1.setText("Deskripsi Barang");
-        
-        deskripsiBarang1.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (deskripsiBarang1.getText().equals("Deskripsi Barang")) {
-                    deskripsiBarang1.setText("");
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if (deskripsiBarang1.getText().isEmpty()) {
-                    deskripsiBarang1.setText("Deskripsi Barang");
-                }
-            }
-        });
-
-        namaBarang1.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nama Barang");
-        idBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Cari Barang Berdasarkan ID");
-        hargaBarang1.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Harga Barang");
+        jumlahBeliUpdate.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Update Jumlah Beli");
     }
 
     @SuppressWarnings("unchecked")
@@ -64,32 +19,30 @@ public class Form_Input_Transaksi extends javax.swing.JPanel {
 
         panelBorder2 = new com.penjualan.swing.PanelBorder();
         p1 = new javax.swing.JLabel();
-        namaBarang = new javax.swing.JTextField();
-        hargaBarang = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        deskripsiBarang = new javax.swing.JTextArea();
+        jumlahBeli = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         updateBtn = new javax.swing.JButton();
-        idBarang = new javax.swing.JTextField();
-        hargaBarang1 = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        deskripsiBarang1 = new javax.swing.JTextArea();
+        idTransaksi = new javax.swing.JTextField();
+        jumlahBeliUpdate = new javax.swing.JTextField();
         p = new javax.swing.JLabel();
-        namaBarang1 = new javax.swing.JTextField();
         deleteBtn = new javax.swing.JButton();
+        listBarang = new javax.swing.JComboBox<>();
+        listPelanggan = new javax.swing.JComboBox<>();
+        listPelanggan1 = new javax.swing.JComboBox<>();
+        listBarang1 = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(242, 242, 242));
 
         p1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         p1.setForeground(new java.awt.Color(255, 102, 102));
-        p1.setText("Input Data Barang");
+        p1.setText("Input Data Transaksi");
 
         javax.swing.GroupLayout panelBorder2Layout = new javax.swing.GroupLayout(panelBorder2);
         panelBorder2.setLayout(panelBorder2Layout);
         panelBorder2Layout.setHorizontalGroup(
             panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder2Layout.createSequentialGroup()
-                .addGap(207, 207, 207)
+                .addGap(226, 226, 226)
                 .addComponent(p1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -100,15 +53,6 @@ public class Form_Input_Transaksi extends javax.swing.JPanel {
                 .addComponent(p1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        deskripsiBarang.setColumns(20);
-        deskripsiBarang.setRows(5);
-        deskripsiBarang.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                deskripsiBarangFocusGained(evt);
-            }
-        });
-        jScrollPane1.setViewportView(deskripsiBarang);
 
         jButton1.setText("Simpan");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -124,18 +68,15 @@ public class Form_Input_Transaksi extends javax.swing.JPanel {
             }
         });
 
-        deskripsiBarang1.setColumns(20);
-        deskripsiBarang1.setRows(5);
-        deskripsiBarang1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                deskripsiBarang1FocusGained(evt);
+        jumlahBeliUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jumlahBeliUpdateActionPerformed(evt);
             }
         });
-        jScrollPane2.setViewportView(deskripsiBarang1);
 
         p.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         p.setForeground(new java.awt.Color(255, 102, 102));
-        p.setText("Update dan Delete Data Barang");
+        p.setText("Update dan Delete Data Transaksi");
 
         deleteBtn.setText("DELETE");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -144,95 +85,84 @@ public class Form_Input_Transaksi extends javax.swing.JPanel {
             }
         });
 
+        listBarang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        listPelanggan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        listPelanggan1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        listBarang1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(panelBorder2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(p)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(namaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(hargaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(58, 58, 58)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jButton1)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(120, 120, 120)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(deleteBtn)
-                                        .addGap(28, 28, 28)
-                                        .addComponent(updateBtn))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(idBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(hargaBarang1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(namaBarang1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(41, 41, 41)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 262, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(panelBorder2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(174, 174, 174)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(idTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jumlahBeliUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(listBarang1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(listPelanggan1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(deleteBtn, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(updateBtn, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jumlahBeli)
+                            .addComponent(listBarang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(listPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addComponent(p))
+                .addContainerGap(324, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelBorder2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(namaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(hargaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(p)
-                        .addGap(49, 49, 49)
-                        .addComponent(idBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(namaBarang1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16)
-                        .addComponent(hargaBarang1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(72, 72, 72))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
+                .addComponent(listPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(updateBtn)
+                    .addComponent(listBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(18, 18, 18)
+                .addComponent(jumlahBeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67)
+                .addComponent(p)
+                .addGap(55, 55, 55)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteBtn))
-                .addGap(31, 31, 31))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(updateBtn)
+                        .addGap(4, 4, 4))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(listPelanggan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(listBarang1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addComponent(jumlahBeliUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(98, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void deskripsiBarangFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_deskripsiBarangFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deskripsiBarangFocusGained
-
-    private void deskripsiBarang1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_deskripsiBarang1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deskripsiBarang1FocusGained
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
@@ -242,19 +172,21 @@ public class Form_Input_Transaksi extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_updateBtnActionPerformed
 
+    private void jumlahBeliUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlahBeliUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jumlahBeliUpdateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteBtn;
-    private javax.swing.JTextArea deskripsiBarang;
-    private javax.swing.JTextArea deskripsiBarang1;
-    private javax.swing.JTextField hargaBarang;
-    private javax.swing.JTextField hargaBarang1;
-    private javax.swing.JTextField idBarang;
+    private javax.swing.JTextField idTransaksi;
     private javax.swing.JButton jButton1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField namaBarang;
-    private javax.swing.JTextField namaBarang1;
+    private javax.swing.JTextField jumlahBeli;
+    private javax.swing.JTextField jumlahBeliUpdate;
+    private javax.swing.JComboBox<String> listBarang;
+    private javax.swing.JComboBox<String> listBarang1;
+    private javax.swing.JComboBox<String> listPelanggan;
+    private javax.swing.JComboBox<String> listPelanggan1;
     private javax.swing.JLabel p;
     private javax.swing.JLabel p1;
     private com.penjualan.swing.PanelBorder panelBorder2;

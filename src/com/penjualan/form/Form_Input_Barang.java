@@ -1,8 +1,13 @@
 package com.penjualan.form;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.penjualan.db.DatabaseConnection;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.UIManager;
 
 public class Form_Input_Barang extends javax.swing.JPanel {
@@ -124,6 +129,12 @@ public class Form_Input_Barang extends javax.swing.JPanel {
             }
         });
 
+        idBarang.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                idBarangCaretUpdate(evt);
+            }
+        });
+
         deskripsiBarang1.setColumns(20);
         deskripsiBarang1.setRows(5);
         deskripsiBarang1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -241,6 +252,26 @@ public class Form_Input_Barang extends javax.swing.JPanel {
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void idBarangCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_idBarangCaretUpdate
+        // TODO add your handling code here:
+        
+        try {
+            Connection c = DatabaseConnection.getConnection();
+            Statement s = c.createStatement();
+            String sql = "Select * from barang where id_barang ='" + this.idBarang.getText() + "'";
+            ResultSet r = s.executeQuery(sql);
+            while (r.next()) {
+              namaBarang1.setText(r.getString("nama"));
+              deskripsiBarang1.setText(r.getString("deskripsi"));
+              hargaBarang1.setText(r.getString("harga"));
+            }
+            r.close();
+            s.close();
+        } catch (SQLException e) {
+            System.out.println("Terjadi Kesalahan" + e);
+        }
+    }//GEN-LAST:event_idBarangCaretUpdate
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

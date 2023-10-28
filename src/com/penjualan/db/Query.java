@@ -49,7 +49,6 @@ public class Query {
         try {
             connection = DatabaseConnection.getConnection();
             String customQuery = "SELECT count(*) FROM users WHERE nama = ? and password = password(?)";
-//            String query = "SELECT * FROM users WHERE nama = ?";
             statement = connection.prepareStatement(customQuery);
             statement.setString(1, nama.getText()); // Menggunakan PreparedStatement untuk menghindari SQL Injection
             statement.setString(2, password.getText());

@@ -2,6 +2,7 @@ package com.penjualan.form;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.util.UIScale;
+import com.penjualan.db.Query;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -137,8 +138,8 @@ public class LoginForm extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
-       loginIsValid = LoginValidation.isValid(txtUser.getText(), txtPass.getText());
-       if(loginIsValid){
+
+       if(Query.getUser(txtUser, txtPass)){
             JOptionPane.showMessageDialog(this, "Login berhasil. Selamat datang, " + txtUser.getText(), "Login Berhasil", JOptionPane.INFORMATION_MESSAGE);
        }else{
            JOptionPane.showMessageDialog(this, "Login gagal. Coba lagi.", "Login Gagal", JOptionPane.ERROR_MESSAGE);

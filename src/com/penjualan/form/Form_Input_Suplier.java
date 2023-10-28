@@ -12,7 +12,6 @@ public class Form_Input_Suplier extends javax.swing.JPanel {
         kontakPemasok.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Kontak Pemasok");
         kontakPemasok1.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Kontak Pemasok");
         
-             
         alamatPemasok.setText("Alamat Pelanggan");
         
         alamatPemasok.addFocusListener(new FocusListener() {
