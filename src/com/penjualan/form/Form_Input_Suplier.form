@@ -30,36 +30,36 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="p" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="namaBarang" alignment="0" min="-2" pref="225" max="-2" attributes="0"/>
-                                          <Component id="hargaBarang" alignment="0" min="-2" pref="225" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane1" min="-2" pref="226" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jButton1" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
+                              <Component id="p" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jButton1" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="deleteBtn" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                       <Component id="updateBtn" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="idBarang" alignment="1" min="-2" pref="225" max="-2" attributes="0"/>
-                                          <Component id="hargaBarang1" min="-2" pref="225" max="-2" attributes="0"/>
-                                          <Component id="namaBarang1" min="-2" pref="225" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="namaPemasok" alignment="0" min="-2" pref="225" max="-2" attributes="0"/>
+                                              <Component id="kontakPemasok" alignment="0" min="-2" pref="225" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="jScrollPane1" min="-2" pref="226" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane2" min="-2" pref="226" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="idPemasok" alignment="1" min="-2" pref="225" max="-2" attributes="0"/>
+                                              <Component id="kontakPemasok1" min="-2" pref="225" max="-2" attributes="0"/>
+                                              <Component id="namaBarang1" min="-2" pref="225" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                          <Component id="jScrollPane2" min="-2" pref="226" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
@@ -76,17 +76,15 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="panelBorder2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                      <Component id="namaBarang" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="hargaBarang" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="namaPemasok" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="125" max="-2" attributes="0"/>
+                      <Component id="kontakPemasok" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jScrollPane1" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -95,11 +93,11 @@
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="p" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                      <Component id="idBarang" min="-2" max="-2" attributes="0"/>
+                      <Component id="idPemasok" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="namaBarang1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="hargaBarang1" min="-2" max="-2" attributes="0"/>
+                      <Component id="kontakPemasok1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
@@ -150,14 +148,14 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Input Data Barang"/>
+            <Property name="text" type="java.lang.String" value="Input Data Pemasok"/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="namaBarang">
+    <Component class="javax.swing.JTextField" name="namaPemasok">
     </Component>
-    <Component class="javax.swing.JTextField" name="hargaBarang">
+    <Component class="javax.swing.JTextField" name="kontakPemasok">
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -166,13 +164,13 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="deskripsiBarang">
+        <Component class="javax.swing.JTextArea" name="alamatPemasok">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
           </Properties>
           <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="deskripsiBarangFocusGained"/>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="alamatPemasokFocusGained"/>
           </Events>
         </Component>
       </SubComponents>
@@ -193,9 +191,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="idBarang">
+    <Component class="javax.swing.JTextField" name="idPemasok">
     </Component>
-    <Component class="javax.swing.JTextField" name="hargaBarang1">
+    <Component class="javax.swing.JTextField" name="kontakPemasok1">
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <AuxValues>
@@ -204,13 +202,13 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="deskripsiBarang1">
+        <Component class="javax.swing.JTextArea" name="alamatPemasok1">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
           </Properties>
           <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="deskripsiBarang1FocusGained"/>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="alamatPemasok1FocusGained"/>
           </Events>
         </Component>
       </SubComponents>
@@ -223,7 +221,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Update dan Delete Data Barang"/>
+        <Property name="text" type="java.lang.String" value="Update dan Delete Data Pemasok"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="namaBarang1">

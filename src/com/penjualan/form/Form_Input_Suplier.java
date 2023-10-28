@@ -3,59 +3,55 @@ package com.penjualan.form;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import javax.swing.UIManager;
 
 public class Form_Input_Suplier extends javax.swing.JPanel {
 
     public Form_Input_Suplier() {
         initComponents();
-        namaBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nama Barang");
-        hargaBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Harga Barang");
-
-        UIManager.put("TextArea.emptyText", "Deskripsi Barang");
-
-        deskripsiBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "kok gabisa");
-        deskripsiBarang1.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Deskripsi Barang");
         
-        deskripsiBarang.setText("Deskripsi Barang");
+        kontakPemasok.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Kontak Pemasok");
+        kontakPemasok1.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Kontak Pemasok");
         
-        deskripsiBarang.addFocusListener(new FocusListener() {
+             
+        alamatPemasok.setText("Alamat Pelanggan");
+        
+        alamatPemasok.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (deskripsiBarang.getText().equals("Deskripsi Barang")) {
-                    deskripsiBarang.setText("");
+                if (alamatPemasok.getText().equals("Alamat Pelanggan")) {
+                    alamatPemasok.setText("");
                 }
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                if (deskripsiBarang.getText().isEmpty()) {
-                    deskripsiBarang.setText("Deskripsi Barang");
+                if (alamatPemasok.getText().isEmpty()) {
+                    alamatPemasok.setText("Alamat Pelanggan");
                 }
             }
         });
         
-        deskripsiBarang1.setText("Deskripsi Barang");
+        alamatPemasok1.setText("Alamat Pelanggan");
         
-        deskripsiBarang1.addFocusListener(new FocusListener() {
+        alamatPemasok1.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (deskripsiBarang1.getText().equals("Deskripsi Barang")) {
-                    deskripsiBarang1.setText("");
+                if (alamatPemasok1.getText().equals("Alamat Pelanggan")) {
+                    alamatPemasok1.setText("");
                 }
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                if (deskripsiBarang1.getText().isEmpty()) {
-                    deskripsiBarang1.setText("Deskripsi Barang");
+                if (alamatPemasok1.getText().isEmpty()) {
+                    alamatPemasok1.setText("Alamat Pelanggan");
                 }
             }
         });
-
-        namaBarang1.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nama Barang");
-        idBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Cari Barang Berdasarkan ID");
-        hargaBarang1.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Harga Barang");
+        
+        namaPemasok.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nama Pemasok");
+        namaBarang1.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nama Pemasok");
+        idPemasok.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Cari Transaksi Berdasarkan ID");
     }
 
     @SuppressWarnings("unchecked")
@@ -64,16 +60,16 @@ public class Form_Input_Suplier extends javax.swing.JPanel {
 
         panelBorder2 = new com.penjualan.swing.PanelBorder();
         p1 = new javax.swing.JLabel();
-        namaBarang = new javax.swing.JTextField();
-        hargaBarang = new javax.swing.JTextField();
+        namaPemasok = new javax.swing.JTextField();
+        kontakPemasok = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        deskripsiBarang = new javax.swing.JTextArea();
+        alamatPemasok = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         updateBtn = new javax.swing.JButton();
-        idBarang = new javax.swing.JTextField();
-        hargaBarang1 = new javax.swing.JTextField();
+        idPemasok = new javax.swing.JTextField();
+        kontakPemasok1 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        deskripsiBarang1 = new javax.swing.JTextArea();
+        alamatPemasok1 = new javax.swing.JTextArea();
         p = new javax.swing.JLabel();
         namaBarang1 = new javax.swing.JTextField();
         deleteBtn = new javax.swing.JButton();
@@ -82,7 +78,7 @@ public class Form_Input_Suplier extends javax.swing.JPanel {
 
         p1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         p1.setForeground(new java.awt.Color(255, 102, 102));
-        p1.setText("Input Data Barang");
+        p1.setText("Input Data Pemasok");
 
         javax.swing.GroupLayout panelBorder2Layout = new javax.swing.GroupLayout(panelBorder2);
         panelBorder2.setLayout(panelBorder2Layout);
@@ -101,14 +97,14 @@ public class Form_Input_Suplier extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        deskripsiBarang.setColumns(20);
-        deskripsiBarang.setRows(5);
-        deskripsiBarang.addFocusListener(new java.awt.event.FocusAdapter() {
+        alamatPemasok.setColumns(20);
+        alamatPemasok.setRows(5);
+        alamatPemasok.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                deskripsiBarangFocusGained(evt);
+                alamatPemasokFocusGained(evt);
             }
         });
-        jScrollPane1.setViewportView(deskripsiBarang);
+        jScrollPane1.setViewportView(alamatPemasok);
 
         jButton1.setText("Simpan");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -124,18 +120,18 @@ public class Form_Input_Suplier extends javax.swing.JPanel {
             }
         });
 
-        deskripsiBarang1.setColumns(20);
-        deskripsiBarang1.setRows(5);
-        deskripsiBarang1.addFocusListener(new java.awt.event.FocusAdapter() {
+        alamatPemasok1.setColumns(20);
+        alamatPemasok1.setRows(5);
+        alamatPemasok1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                deskripsiBarang1FocusGained(evt);
+                alamatPemasok1FocusGained(evt);
             }
         });
-        jScrollPane2.setViewportView(deskripsiBarang1);
+        jScrollPane2.setViewportView(alamatPemasok1);
 
         p.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         p.setForeground(new java.awt.Color(255, 102, 102));
-        p.setText("Update dan Delete Data Barang");
+        p.setText("Update dan Delete Data Pemasok");
 
         deleteBtn.setText("DELETE");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -156,30 +152,30 @@ public class Form_Input_Suplier extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(p)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(namaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(hargaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(58, 58, 58)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jButton1)))
+                                .addGap(158, 158, 158)
+                                .addComponent(p))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(120, 120, 120)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton1)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(deleteBtn)
                                         .addGap(28, 28, 28)
                                         .addComponent(updateBtn))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(idBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(hargaBarang1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(namaBarang1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(41, 41, 41)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(namaPemasok, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(kontakPemasok, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(idPemasok, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(kontakPemasok1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(namaBarang1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(41, 41, 41)
+                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGap(0, 262, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -188,15 +184,14 @@ public class Form_Input_Suplier extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelBorder2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(namaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(namaPemasok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(hargaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(kontakPemasok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,11 +199,11 @@ public class Form_Input_Suplier extends javax.swing.JPanel {
                         .addGap(24, 24, 24)
                         .addComponent(p)
                         .addGap(49, 49, 49)
-                        .addComponent(idBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(idPemasok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(namaBarang1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16)
-                        .addComponent(hargaBarang1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(kontakPemasok1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(72, 72, 72))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -226,14 +221,6 @@ public class Form_Input_Suplier extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void deskripsiBarangFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_deskripsiBarangFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deskripsiBarangFocusGained
-
-    private void deskripsiBarang1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_deskripsiBarang1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deskripsiBarang1FocusGained
-
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteBtnActionPerformed
@@ -242,19 +229,27 @@ public class Form_Input_Suplier extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_updateBtnActionPerformed
 
+    private void alamatPemasok1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_alamatPemasok1FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_alamatPemasok1FocusGained
+
+    private void alamatPemasokFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_alamatPemasokFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_alamatPemasokFocusGained
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea alamatPemasok;
+    private javax.swing.JTextArea alamatPemasok1;
     private javax.swing.JButton deleteBtn;
-    private javax.swing.JTextArea deskripsiBarang;
-    private javax.swing.JTextArea deskripsiBarang1;
-    private javax.swing.JTextField hargaBarang;
-    private javax.swing.JTextField hargaBarang1;
-    private javax.swing.JTextField idBarang;
+    private javax.swing.JTextField idPemasok;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField namaBarang;
+    private javax.swing.JTextField kontakPemasok;
+    private javax.swing.JTextField kontakPemasok1;
     private javax.swing.JTextField namaBarang1;
+    private javax.swing.JTextField namaPemasok;
     private javax.swing.JLabel p;
     private javax.swing.JLabel p1;
     private com.penjualan.swing.PanelBorder panelBorder2;
