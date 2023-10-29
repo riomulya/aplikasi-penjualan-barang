@@ -455,6 +455,24 @@ public class Query {
             e.printStackTrace();
         }
     }
+    
+    public static void insertDataInventaris(int id_barang, int stok) {
+        String query = "INSERT INTO inventaris_barang (id_barang, stok, tanggal_perubahan) VALUES ( ?, ?, NOW())";
+        try (Connection connection = DatabaseConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, id_barang);
+            statement.setInt(2, stok);
+
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                JOptionPane.showMessageDialog(null, "Data telah disisipkan ke dalam tabel.", "Insert Data Berhasil", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Gagal menyisipkan data ke dalam tabel.", "Insert Data Gagal", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static int getIdPelanggan(JComboBox comboBox) {
         String sql = "SELECT id_pelanggan FROM pelanggan WHERE nama = ?";
@@ -469,6 +487,7 @@ public class Query {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+//        comboBox.getSelectedItem()
         return 0;
     }
 
@@ -578,6 +597,44 @@ public class Query {
 
             // Mengikat nilai parameter
             statement.setInt(1, jumlah);
+            statement.setInt(2, id);
+
+            // Menjalankan pernyataan UPDATE
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated > 0) {
+                JOptionPane.showMessageDialog(null, "Data berhasil diperbarui.", "Update Data Berhasil", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Gagal memperbarui data.", "Update Data Gagal", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Tutup statement dan koneksi
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    
+    public static void updateDataInventaris(int stok, int id) {
+        try {
+            connection = DatabaseConnection.getConnection();
+            String query = "UPDATE inventaris_barang SET stok = ? WHERE id_barang = ?";
+            statement = connection.prepareStatement(query);
+
+            // Mengikat nilai parameter
+            statement.setInt(1, stok);
             statement.setInt(2, id);
 
             // Menjalankan pernyataan UPDATE

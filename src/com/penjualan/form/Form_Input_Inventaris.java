@@ -1,8 +1,16 @@
 package com.penjualan.form;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.penjualan.db.DatabaseConnection;
 
 import com.penjualan.db.Query;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 public class Form_Input_Inventaris extends javax.swing.JPanel {
 
@@ -16,6 +24,36 @@ public class Form_Input_Inventaris extends javax.swing.JPanel {
 
         Query.getDataListBarang(listBarang);
         Query.getDataListBarangInventaris(listBarang1);
+        listBarang1.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    String selectedItem = (String) listBarang1.getSelectedItem();
+                    // Manipulasi komponen lain, seperti JTextField
+                    int idBar = Query.getIdBarang(listBarang1);
+                    if (idBar == 0) {
+                        JOptionPane.showMessageDialog(null, "Id inventaris tidak ditemukan.", "Delete Data Gagal", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    try {
+                        Connection c = DatabaseConnection.getConnection();
+                        Statement s = c.createStatement();
+                        String sql = "Select * from inventaris_barang where id_barang ='" + idBar + "'";
+                        ResultSet r = s.executeQuery(sql);
+
+                        while (r.next()) {
+                            updateStok.setText(r.getString("stok"));
+                        }
+                        r.close();
+                        s.close();
+                    } catch (SQLException er) {
+                        System.out.println("Pesan error: " + er.getMessage());
+                        System.out.println("Kode error: " + er.getErrorCode());
+                        System.out.println("SQLState: " + er.getSQLState());
+                    }
+                }
+            }
+        });
     }
 
     @SuppressWarnings("unchecked")
@@ -82,6 +120,37 @@ public class Form_Input_Inventaris extends javax.swing.JPanel {
         });
 
         listBarang1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        listBarang1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                listBarang1ItemStateChanged(evt);
+            }
+        });
+        listBarang1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                listBarang1MouseMoved(evt);
+            }
+        });
+        listBarang1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listBarang1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                listBarang1MouseEntered(evt);
+            }
+        });
+        listBarang1.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                listBarang1CaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                listBarang1InputMethodTextChanged(evt);
+            }
+        });
+        listBarang1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listBarang1ActionPerformed(evt);
+            }
+        });
 
         listBarang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -144,15 +213,178 @@ public class Form_Input_Inventaris extends javax.swing.JPanel {
 
     private void simpanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanBtnActionPerformed
         // TODO add your handling code here:
+        int idBar = Query.getIdBarang(listBarang);
+        if (idBar == 0) {
+            JOptionPane.showMessageDialog(null, "Barang tidak ditemukan.", "Insert Data Gagal", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        Query.insertDataInventaris(idBar, Integer.parseInt(stokBarang.getText()));
+        listBarang.removeItemAt(listBarang.getSelectedIndex());
+        stokBarang.setText("");
     }//GEN-LAST:event_simpanBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
+        int idBar = Query.getIdBarang(listBarang1);
+        if (idBar == 0) {
+            JOptionPane.showMessageDialog(null, "Id inventaris tidak ditemukan.", "Delete Data Gagal", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        String sql = "DELETE from inventaris_barang where id_barang = ?;";
+        Query.deleteData(sql, idBar);
+        listBarang1.removeItemAt(listBarang1.getSelectedIndex());
+//        System.out.println(lis);
+        stokBarang.setText("");
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
+        int idBar = Query.getIdBarang(listBarang1);
+        if (idBar == 0) {
+            JOptionPane.showMessageDialog(null, "Id inventaris tidak ditemukan.", "Delete Data Gagal", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        Query.updateDataInventaris(Integer.parseInt(updateStok.getText()), idBar);
     }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void listBarang1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listBarang1MouseClicked
+        // TODO add your handling code here:
+//        int idBar = Query.getIdBarang(listBarang1);
+//        if (idBar == 0) {
+//            JOptionPane.showMessageDialog(null, "Id inventaris tidak ditemukan.", "Delete Data Gagal", JOptionPane.ERROR_MESSAGE);
+//            return;
+//        }
+//        try {
+//            Connection c = DatabaseConnection.getConnection();
+//            Statement s = c.createStatement();
+//            String sql = "Select * from inventaris_barang where id_barang ='" + idBar+ "'";
+//            ResultSet r = s.executeQuery(sql);
+//
+//            while (r.next()) {
+//                updateStok.setText(r.getString("stok"));
+//            }
+//            r.close();
+//            s.close();
+//        } catch (SQLException e) {
+//            System.out.println("Pesan error: " + e.getMessage());
+//            System.out.println("Kode error: " + e.getErrorCode());
+//            System.out.println("SQLState: " + e.getSQLState());
+//        }
+    }//GEN-LAST:event_listBarang1MouseClicked
+
+    private void listBarang1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listBarang1MouseEntered
+        // TODO add your handling code here:
+
+        int idBar = Query.getIdBarang(listBarang1);
+        if (idBar == 0) {
+            JOptionPane.showMessageDialog(null, "Id inventaris tidak ditemukan.", "Delete Data Gagal", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            Connection c = DatabaseConnection.getConnection();
+            Statement s = c.createStatement();
+            String sql = "Select * from inventaris_barang where id_barang ='" + idBar + "'";
+            ResultSet r = s.executeQuery(sql);
+
+            while (r.next()) {
+                updateStok.setText(r.getString("stok"));
+            }
+            r.close();
+            s.close();
+        } catch (SQLException e) {
+            System.out.println("Pesan error: " + e.getMessage());
+            System.out.println("Kode error: " + e.getErrorCode());
+            System.out.println("SQLState: " + e.getSQLState());
+        }
+    }//GEN-LAST:event_listBarang1MouseEntered
+
+    private void listBarang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBarang1ActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_listBarang1ActionPerformed
+
+    private void listBarang1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listBarang1ItemStateChanged
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_listBarang1ItemStateChanged
+
+    private void listBarang1CaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_listBarang1CaretPositionChanged
+        // TODO add your handling code here:
+        int idBar = Query.getIdBarang(listBarang1);
+        if (idBar == 0) {
+            JOptionPane.showMessageDialog(null, "Id inventaris tidak ditemukan.", "Delete Data Gagal", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            Connection c = DatabaseConnection.getConnection();
+            Statement s = c.createStatement();
+            String sql = "Select * from inventaris_barang where id_barang ='" + idBar + "'";
+            ResultSet r = s.executeQuery(sql);
+
+            while (r.next()) {
+                updateStok.setText(r.getString("stok"));
+            }
+            r.close();
+            s.close();
+        } catch (SQLException e) {
+            System.out.println("Pesan error: " + e.getMessage());
+            System.out.println("Kode error: " + e.getErrorCode());
+            System.out.println("SQLState: " + e.getSQLState());
+        }
+
+    }//GEN-LAST:event_listBarang1CaretPositionChanged
+
+    private void listBarang1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_listBarang1InputMethodTextChanged
+        // TODO add your handling code here:
+        int idBar = Query.getIdBarang(listBarang1);
+        if (idBar == 0) {
+            JOptionPane.showMessageDialog(null, "Id inventaris tidak ditemukan.", "Delete Data Gagal", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            Connection c = DatabaseConnection.getConnection();
+            Statement s = c.createStatement();
+            String sql = "Select * from inventaris_barang where id_barang ='" + idBar + "'";
+            ResultSet r = s.executeQuery(sql);
+
+            while (r.next()) {
+                updateStok.setText(r.getString("stok"));
+            }
+            r.close();
+            s.close();
+        } catch (SQLException e) {
+            System.out.println("Pesan error: " + e.getMessage());
+            System.out.println("Kode error: " + e.getErrorCode());
+            System.out.println("SQLState: " + e.getSQLState());
+        }
+
+    }//GEN-LAST:event_listBarang1InputMethodTextChanged
+
+    private void listBarang1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listBarang1MouseMoved
+        // TODO add your handling code here:
+        int idBar = Query.getIdBarang(listBarang1);
+        if (idBar == 0) {
+            JOptionPane.showMessageDialog(null, "Id inventaris tidak ditemukan.", "Delete Data Gagal", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            Connection c = DatabaseConnection.getConnection();
+            Statement s = c.createStatement();
+            String sql = "Select * from inventaris_barang where id_barang ='" + idBar + "'";
+            ResultSet r = s.executeQuery(sql);
+
+            while (r.next()) {
+                updateStok.setText(r.getString("stok"));
+            }
+            r.close();
+            s.close();
+        } catch (SQLException e) {
+            System.out.println("Pesan error: " + e.getMessage());
+            System.out.println("Kode error: " + e.getErrorCode());
+            System.out.println("SQLState: " + e.getSQLState());
+        }
+
+    }//GEN-LAST:event_listBarang1MouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

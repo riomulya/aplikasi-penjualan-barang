@@ -185,9 +185,7 @@ public class Form_Input_Transaksi extends javax.swing.JPanel {
         int idBar = Query.getIdBarang(listBarang);
 
         int idPel = Query.getIdPelanggan(listPelanggan);
-        System.out.println("barang get item : " + listBarang.getSelectedItem());
-        System.out.println("pelanggan get item : " + listPelanggan.getSelectedItem());
-        System.out.println("Id barang : " + idBar + " idPelanggan : " + idPel);
+      
         if (idBar == 0 && idPel == 0) {
             JOptionPane.showMessageDialog(null, "Barang tidak ditemukan.", "Insert Data Gagal", JOptionPane.ERROR_MESSAGE);
             return;
