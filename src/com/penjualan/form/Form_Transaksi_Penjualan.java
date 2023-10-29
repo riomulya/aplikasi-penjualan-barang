@@ -1,5 +1,6 @@
 package com.penjualan.form;
 
+import com.penjualan.db.Query;
 import static com.penjualan.db.Query.getDataBarang;
 import com.penjualan.swing.ScrollBar;
 import java.awt.Color;
@@ -22,8 +23,7 @@ public class Form_Transaksi_Penjualan extends javax.swing.JPanel {
         JPanel p = new JPanel();
         p.setBackground(Color.WHITE);
         DefaultTableModel modelBarang = (DefaultTableModel) table1.getModel();
-        String queryBarang = "SELECT id_barang, nama, deskripsi, harga FROM barang";
-        getDataBarang(modelBarang, queryBarang);
+        Query.getDataTransaksi(modelBarang);
         DecimalFormat df = new DecimalFormat("#,##0.00");
         TableCellRenderer renderer = new DefaultTableCellRenderer() {
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -34,7 +34,8 @@ public class Form_Transaksi_Penjualan extends javax.swing.JPanel {
             }
         };
 
-        table1.getColumnModel().getColumn(3).setCellRenderer(renderer);
+        table1.getColumnModel().getColumn(4).setCellRenderer(renderer);
+        table1.getColumnModel().getColumn(6).setCellRenderer(renderer);
     }
 
     @SuppressWarnings("unchecked")
@@ -74,7 +75,7 @@ public class Form_Transaksi_Penjualan extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID Transaksi", "ID Pelanggan", "Tanggal", "ID Barang", "Jumlah"
+                "ID Transaksi", "Nama Pelanggan", "Tanggal", "Nama Barang", "Harga Barang", "Jumlah", "Total Harga"
             }
         ));
         spTable1.setViewportView(table1);

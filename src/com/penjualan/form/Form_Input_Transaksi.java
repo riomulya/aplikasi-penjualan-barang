@@ -1,6 +1,14 @@
 package com.penjualan.form;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.penjualan.db.DatabaseConnection;
+import com.penjualan.db.Query;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 public class Form_Input_Transaksi extends javax.swing.JPanel {
 
@@ -9,8 +17,14 @@ public class Form_Input_Transaksi extends javax.swing.JPanel {
         jumlahBeli.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Jumlah Beli");
 
         idTransaksi.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Cari Transaksi Berdasarkan ID");
-        
+
         jumlahBeliUpdate.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Update Jumlah Beli");
+        String cariPelanggan = "SELECT nama from pelanggan";
+
+        String cariBarang = "SELECT nama from barang";
+//        String cariPelanggan = ""
+        Query.getDataListTransaksi(listBarang, cariBarang);
+        Query.getDataListTransaksi(listPelanggan, cariPelanggan);
     }
 
     @SuppressWarnings("unchecked")
@@ -20,7 +34,7 @@ public class Form_Input_Transaksi extends javax.swing.JPanel {
         panelBorder2 = new com.penjualan.swing.PanelBorder();
         p1 = new javax.swing.JLabel();
         jumlahBeli = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        simpanBtn = new javax.swing.JButton();
         updateBtn = new javax.swing.JButton();
         idTransaksi = new javax.swing.JTextField();
         jumlahBeliUpdate = new javax.swing.JTextField();
@@ -54,10 +68,10 @@ public class Form_Input_Transaksi extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Simpan");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        simpanBtn.setText("Simpan");
+        simpanBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                simpanBtnActionPerformed(evt);
             }
         });
 
@@ -65,6 +79,12 @@ public class Form_Input_Transaksi extends javax.swing.JPanel {
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateBtnActionPerformed(evt);
+            }
+        });
+
+        idTransaksi.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                idTransaksiCaretUpdate(evt);
             }
         });
 
@@ -121,7 +141,7 @@ public class Form_Input_Transaksi extends javax.swing.JPanel {
                             .addComponent(listBarang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(listPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(simpanBtn))
                     .addComponent(p))
                 .addContainerGap(324, Short.MAX_VALUE))
         );
@@ -135,7 +155,7 @@ public class Form_Input_Transaksi extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(listBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(simpanBtn))
                 .addGap(18, 18, 18)
                 .addComponent(jumlahBeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67)
@@ -160,27 +180,76 @@ public class Form_Input_Transaksi extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void simpanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        int idBar = Query.getIdBarang(listBarang);
+
+        int idPel = Query.getIdPelanggan(listPelanggan);
+        System.out.println("barang get item : " + listBarang.getSelectedItem());
+        System.out.println("pelanggan get item : " + listPelanggan.getSelectedItem());
+        System.out.println("Id barang : " + idBar + " idPelanggan : " + idPel);
+        if (idBar == 0 && idPel == 0) {
+            JOptionPane.showMessageDialog(null, "Barang tidak ditemukan.", "Insert Data Gagal", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        Query.insertDataTransaksi(idPel, idBar, Integer.parseInt(jumlahBeli.getText()));
+    }//GEN-LAST:event_simpanBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
+        String sql = "DELETE from transaksi_penjualan where id_transaksi = ?;";
+        Query.deleteData(sql, Integer.parseInt(idTransaksi.getText()));
+        idTransaksi.setText("");
+        jumlahBeliUpdate.setText("");
+        listBarang1.removeAllItems();
+        listPelanggan1.removeAllItems();
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
+        Query.updateDataTransaksi(Integer.parseInt(jumlahBeliUpdate.getText()),Integer.parseInt(idTransaksi.getText()));
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void jumlahBeliUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlahBeliUpdateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jumlahBeliUpdateActionPerformed
 
+    private void idTransaksiCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_idTransaksiCaretUpdate
+        // TODO add your handling code here:
+        String idPel, idBar;
+        if (idTransaksi.getText().isEmpty()) {
+            jumlahBeliUpdate.setText("");
+            listBarang1.removeAllItems();
+            listPelanggan1.removeAllItems();
+        }
+        try {
+            Connection c = DatabaseConnection.getConnection();
+            Statement s = c.createStatement();
+            String sql = "Select * from transaksi_penjualan where id_transaksi ='" + this.idTransaksi.getText() + "'";
+            ResultSet r = s.executeQuery(sql);
+
+            while (r.next()) {
+                jumlahBeliUpdate.setText(r.getString("jumlah"));
+//                Query.getDataListBarangTransaksi(listBarang1);
+//                Query.getDataListPelangganTransaksi(listPelanggan1);
+                String getDataBarang = "SELECT nama FROM barang WHERE id_barang = '" + r.getString("id_barang") + "'";
+                Query.getDataListTransaksi(listBarang1, getDataBarang);
+                String getDataPelanggan = "SELECT nama FROM pelanggan WHERE id_pelanggan ='" + r.getString("id_pelanggan") + "'";
+                Query.getDataListTransaksi(listPelanggan1, getDataPelanggan);
+            }
+            r.close();
+            s.close();
+        } catch (SQLException e) {
+            System.out.println("Pesan error: " + e.getMessage());
+            System.out.println("Kode error: " + e.getErrorCode());
+            System.out.println("SQLState: " + e.getSQLState());
+        }
+    }//GEN-LAST:event_idTransaksiCaretUpdate
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteBtn;
     private javax.swing.JTextField idTransaksi;
-    private javax.swing.JButton jButton1;
     private javax.swing.JTextField jumlahBeli;
     private javax.swing.JTextField jumlahBeliUpdate;
     private javax.swing.JComboBox<String> listBarang;
@@ -190,6 +259,7 @@ public class Form_Input_Transaksi extends javax.swing.JPanel {
     private javax.swing.JLabel p;
     private javax.swing.JLabel p1;
     private com.penjualan.swing.PanelBorder panelBorder2;
+    private javax.swing.JButton simpanBtn;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,8 +1,7 @@
 package com.penjualan.form;
 
 import com.formdev.flatlaf.FlatClientProperties;
-import com.mysql.cj.xdevapi.Statement;
-import com.penjualan.db.DatabaseConnection;
+
 import com.penjualan.db.Query;
 
 public class Form_Input_Inventaris extends javax.swing.JPanel {
@@ -15,7 +14,7 @@ public class Form_Input_Inventaris extends javax.swing.JPanel {
         updateStok.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nama Barang");
         updateStok.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Update Stok Barang");
 
-        Query.getDataListBarangInventaris(listBarang);
+        Query.getDataListBarang(listBarang);
         Query.getDataListBarangInventaris(listBarang1);
     }
 

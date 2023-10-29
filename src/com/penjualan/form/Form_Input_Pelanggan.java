@@ -1,20 +1,26 @@
 package com.penjualan.form;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.penjualan.db.DatabaseConnection;
+import com.penjualan.db.Query;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.UIManager;
 
 public class Form_Input_Pelanggan extends javax.swing.JPanel {
 
     public Form_Input_Pelanggan() {
         initComponents();
-        
+
         namaPelanggan.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nama Pelanggan");
         kontakPelanggan.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Kontak Pelanggan");
-              
+
         alamatPelanggan.setText("Alamat Pelanggan");
-        
+
         alamatPelanggan.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -30,9 +36,9 @@ public class Form_Input_Pelanggan extends javax.swing.JPanel {
                 }
             }
         });
-        
+
         alamatPelanggan1.setText("Alamat Pelanggan");
-        
+
         alamatPelanggan1.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -64,7 +70,7 @@ public class Form_Input_Pelanggan extends javax.swing.JPanel {
         kontakPelanggan = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         alamatPelanggan = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        simpanBtn = new javax.swing.JButton();
         updateBtn = new javax.swing.JButton();
         idPelanggan = new javax.swing.JTextField();
         kontakPelanggan1 = new javax.swing.JTextField();
@@ -106,10 +112,10 @@ public class Form_Input_Pelanggan extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(alamatPelanggan);
 
-        jButton1.setText("Simpan");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        simpanBtn.setText("Simpan");
+        simpanBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                simpanBtnActionPerformed(evt);
             }
         });
 
@@ -117,6 +123,12 @@ public class Form_Input_Pelanggan extends javax.swing.JPanel {
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateBtnActionPerformed(evt);
+            }
+        });
+
+        idPelanggan.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                idPelangganCaretUpdate(evt);
             }
         });
 
@@ -157,7 +169,7 @@ public class Form_Input_Pelanggan extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(120, 120, 120)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton1)
+                                    .addComponent(simpanBtn)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(deleteBtn)
                                         .addGap(28, 28, 28)
@@ -193,7 +205,7 @@ public class Form_Input_Pelanggan extends javax.swing.JPanel {
                         .addComponent(kontakPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(simpanBtn)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -217,9 +229,11 @@ public class Form_Input_Pelanggan extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void simpanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+        Query.insertDataPelanggan(namaPelanggan.getText(), alamatPelanggan.getText(), kontakPelanggan.getText());
+    }//GEN-LAST:event_simpanBtnActionPerformed
 
     private void alamatPelangganFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_alamatPelangganFocusGained
         // TODO add your handling code here:
@@ -231,11 +245,46 @@ public class Form_Input_Pelanggan extends javax.swing.JPanel {
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
+//        String sql = "DELETE FROM pelanggan WHERE id_pelanggan = ?";
+        String checkQuery = "SELECT COUNT(*) FROM transaksi_penjualan WHERE id_pelanggan = ?";
+        String deleteQuery = "DELETE FROM pelanggan WHERE id_pelanggan = ?";
+
+        boolean isDelete = Query.deleteDataConstraint(Integer.parseInt(idPelanggan.getText()), checkQuery, deleteQuery);
+        if (isDelete) {
+            namaPelanggan1.setText("");
+            kontakPelanggan1.setText("");
+            alamatPelanggan1.setText("");
+        }
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
+        Query.updateDataPelanggan(Integer.parseInt(idPelanggan.getText()), namaPelanggan1.getText(), alamatPelanggan1.getText(), kontakPelanggan1.getText());
     }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void idPelangganCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_idPelangganCaretUpdate
+        // TODO add your handling code here:
+        if (idPelanggan.getText().isEmpty()) {
+            namaPelanggan1.setText("");
+            kontakPelanggan1.setText("");
+            alamatPelanggan1.setText("");
+        }
+        try {
+            Connection c = DatabaseConnection.getConnection();
+            Statement s = c.createStatement();
+            String sql = "Select * from pelanggan where id_pelanggan ='" + this.idPelanggan.getText() + "'";
+            ResultSet r = s.executeQuery(sql);
+            while (r.next()) {
+                namaPelanggan1.setText(r.getString("nama"));
+                alamatPelanggan1.setText(r.getString("alamat"));
+                kontakPelanggan1.setText(r.getString("kontak"));
+            }
+            r.close();
+            s.close();
+        } catch (SQLException e) {
+            System.out.println("Terjadi Kesalahan" + e);
+        }
+    }//GEN-LAST:event_idPelangganCaretUpdate
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -243,7 +292,6 @@ public class Form_Input_Pelanggan extends javax.swing.JPanel {
     private javax.swing.JTextArea alamatPelanggan1;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JTextField idPelanggan;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField kontakPelanggan;
@@ -253,6 +301,7 @@ public class Form_Input_Pelanggan extends javax.swing.JPanel {
     private javax.swing.JLabel p;
     private javax.swing.JLabel p1;
     private com.penjualan.swing.PanelBorder panelBorder2;
+    private javax.swing.JButton simpanBtn;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 }

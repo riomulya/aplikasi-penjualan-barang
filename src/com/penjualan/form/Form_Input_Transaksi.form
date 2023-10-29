@@ -51,7 +51,7 @@
                           <Component id="listPelanggan" min="-2" pref="225" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="simpanBtn" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="p" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -69,7 +69,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="listBarang" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="simpanBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jumlahBeli" min="-2" max="-2" attributes="0"/>
@@ -139,12 +139,12 @@
     </Container>
     <Component class="javax.swing.JTextField" name="jumlahBeli">
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="simpanBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Simpan"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="simpanBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="updateBtn">
@@ -156,6 +156,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="idTransaksi">
+      <Events>
+        <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="idTransaksiCaretUpdate"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jumlahBeliUpdate">
       <Events>

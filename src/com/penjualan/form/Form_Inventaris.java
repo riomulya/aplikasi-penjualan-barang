@@ -1,5 +1,6 @@
 package com.penjualan.form;
 
+import com.penjualan.db.Query;
 import static com.penjualan.db.Query.getDataBarang;
 import com.penjualan.swing.ScrollBar;
 import java.awt.Color;
@@ -22,19 +23,18 @@ public class Form_Inventaris extends javax.swing.JPanel {
         JPanel p = new JPanel();
         p.setBackground(Color.WHITE);
         DefaultTableModel modelBarang = (DefaultTableModel) table1.getModel();
-        String queryBarang = "SELECT id_barang, nama, deskripsi, harga FROM barang";
-        getDataBarang(modelBarang, queryBarang);
-        DecimalFormat df = new DecimalFormat("#,##0.00");
-        TableCellRenderer renderer = new DefaultTableCellRenderer() {
-            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-                if (value instanceof Number) {
-                    value = "Rp. "+df.format(value);
-                }
-                return super.getTableCellRendererComponent(table1, value, false, false, row, column);
-            }
-        };
-
-        table1.getColumnModel().getColumn(3).setCellRenderer(renderer);
+        Query.getDataInventaris(modelBarang);
+//        DecimalFormat df = new DecimalFormat("#,##0.00");
+//        TableCellRenderer renderer = new DefaultTableCellRenderer() {
+//            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+//                if (value instanceof Number) {
+//                    value = "Rp. "+df.format(value);
+//                }
+//                return super.getTableCellRendererComponent(table1, value, false, false, row, column);
+//            }
+//        };
+//
+//        table1.getColumnModel().getColumn(3).setCellRenderer(renderer);
     }
 
     @SuppressWarnings("unchecked")
@@ -74,7 +74,7 @@ public class Form_Inventaris extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID Inventaris", "ID Barang", "Stok", "Tanggal Perubahan"
+                "ID Inventaris", "Nama Barang", "Stok", "Tanggal Perubahan"
             }
         ));
         spTable1.setViewportView(table1);

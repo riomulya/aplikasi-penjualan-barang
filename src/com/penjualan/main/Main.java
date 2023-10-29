@@ -3,9 +3,7 @@ package com.penjualan.main;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.penjualan.event.EventMenu;
 import com.penjualan.form.Form_About_Me;
-//import com.penjualan.form.Form_1;
-//import com.penjualan.form.Form_2;
-//import com.penjualan.form.Form_3;
+
 import com.penjualan.form.Form_Barang;
 import com.penjualan.form.Form_Input_Barang;
 import com.penjualan.form.Form_Input_Inventaris;
@@ -17,7 +15,6 @@ import com.penjualan.form.Form_Pelanggan;
 import com.penjualan.form.Form_Suplier;
 import com.penjualan.form.Form_Transaksi_Penjualan;
 import com.penjualan.form.LoginForm;
-import com.penjualan.form.LoginValidation;
 import java.awt.Color;
 import java.awt.Insets;
 import javax.swing.JComponent;

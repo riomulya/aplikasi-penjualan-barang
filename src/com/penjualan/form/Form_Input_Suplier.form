@@ -36,7 +36,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jButton1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="simpanBtn" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="deleteBtn" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
@@ -55,7 +55,7 @@
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="idPemasok" alignment="1" min="-2" pref="225" max="-2" attributes="0"/>
                                               <Component id="kontakPemasok1" min="-2" pref="225" max="-2" attributes="0"/>
-                                              <Component id="namaBarang1" min="-2" pref="225" max="-2" attributes="0"/>
+                                              <Component id="namaPemasok1" min="-2" pref="225" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                                           <Component id="jScrollPane2" min="-2" pref="226" max="-2" attributes="0"/>
@@ -87,7 +87,7 @@
                   <Component id="jScrollPane1" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="simpanBtn" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
@@ -95,7 +95,7 @@
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Component id="idPemasok" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="namaBarang1" min="-2" max="-2" attributes="0"/>
+                      <Component id="namaPemasok1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Component id="kontakPemasok1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
@@ -175,12 +175,12 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="simpanBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Simpan"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="simpanBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="updateBtn">
@@ -192,6 +192,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="idPemasok">
+      <Events>
+        <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="idPemasokCaretUpdate"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="kontakPemasok1">
     </Component>
@@ -224,7 +227,7 @@
         <Property name="text" type="java.lang.String" value="Update dan Delete Data Pemasok"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="namaBarang1">
+    <Component class="javax.swing.JTextField" name="namaPemasok1">
     </Component>
     <Component class="javax.swing.JButton" name="deleteBtn">
       <Properties>

@@ -255,19 +255,23 @@ public class Form_Input_Barang extends javax.swing.JPanel {
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
-        String sql = "DELETE FROM barang WHERE id_barang = ?";
-        Query.deleteData(sql, Integer.parseInt(idBarang.getText()));
-        namaBarang1.setText("");
-        hargaBarang1.setText("");
-        deskripsiBarang1.setText("");
+//        String sql = "DELETE FROM barang WHERE id_barang = ?";
+//        Query.deleteData(sql, Integer.parseInt(idBarang.getText()));
+
+        String checkQuery = "SELECT COUNT(*) FROM transaksi_penjualan WHERE id_barang = ?";
+        String deleteQuery = "DELETE FROM barang WHERE id_barang = ?";
+
+        boolean isDelete = Query.deleteDataConstraint(Integer.parseInt(idBarang.getText()), checkQuery, deleteQuery);
+        if (isDelete) {
+            namaBarang1.setText("");
+            hargaBarang1.setText("");
+            deskripsiBarang1.setText("");
+        }
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
         Query.updateDataBarang(Integer.parseInt(idBarang.getText()), namaBarang1.getText(), deskripsiBarang1.getText(), Integer.parseInt(hargaBarang1.getText()));
-        namaBarang1.setText("");
-        hargaBarang1.setText("");
-        deskripsiBarang1.setText("");
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void idBarangCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_idBarangCaretUpdate
